@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>chef.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\chef.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>B424EC0E7AFC6F9DFBE6A3294BBFDAC6F9A8FCB1</ManifestCertificateThumbprint>
@@ -79,16 +79,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FoodData.cs" />
-    <Compile Include="FrmStartGame.cs">
+    <Compile Include="Models\FoodData.cs" />
+    <Compile Include="Forms\FrmStartGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmStartGame.Designer.cs">
+    <Compile Include="Forms\FrmStartGame.Designer.cs">
       <DependentUpon>FrmStartGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmStartGame.resx">
+    <EmbeddedResource Include="Forms\FrmStartGame.resx">
       <DependentUpon>FrmStartGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -114,7 +114,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="chef.ico">
+    <Content Include="Resources\chef.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

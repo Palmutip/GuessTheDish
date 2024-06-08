@@ -6,10 +6,19 @@ using System.Windows.Forms;
 
 namespace GuessTheDish
 {
+    /// <summary>
+    /// Main form of the project
+    /// </summary>
     public partial class FrmStartGame : Form
     {
+        /// <summary>
+        /// Current dishes registered
+        /// </summary>
         private readonly List<FoodData> FoodDataList;
 
+        /// <summary>
+        /// Main form of the project
+        /// </summary>
         public FrmStartGame()
         {
             InitializeComponent();
@@ -19,6 +28,9 @@ namespace GuessTheDish
             };
         }
 
+        /// <summary>
+        /// Action to ask the first question of the game
+        /// </summary>
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("O prato que você pensou é massa?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -32,6 +44,12 @@ namespace GuessTheDish
             NextQuestion(isPasta, foods, new List<string>());
         }
 
+        /// <summary>
+        /// The game did not identify the dish the user thought 
+        /// </summary>
+        /// <param name="isPasta">The user answer of the first question</param>
+        /// <param name="supposedDish">Name of the dish the game thought it was</param>
+        /// <param name="existingCharacteristics">Wanted characteristics in the supposedDish</param>
         private void GiveUp(bool isPasta, string supposedDish, List<string> existingCharacteristics)
         {
             string food = Interaction.InputBox("Qual prato você pensou?", "Desisto", "", 300, 300);
@@ -46,6 +64,13 @@ namespace GuessTheDish
             Complete(isPasta, food, supposedDish, existingCharacteristics);
         }
 
+        /// <summary>
+        /// The game identified the dish the user thought
+        /// </summary>
+        /// <param name="isPasta">The user answer of the first question</param>
+        /// <param name="food">Name of the current dish</param>
+        /// <param name="supposedDish">Name of the dish the game thought it was</param>
+        /// <param name="existingCharacteristics">Characteristics of the selected dish</param>
         private void Complete(bool isPasta, string food, string supposedDish, List<string> existingCharacteristics)
         {
             string characteristic = Interaction.InputBox($"{food} é ________ mas {supposedDish} não", "Complete", "", 300, 300);
@@ -61,7 +86,14 @@ namespace GuessTheDish
 
             FoodDataList.Add(new FoodData(isPasta, existingCharacteristics, food));
         }
-    
+
+        /// <summary>
+        /// Recursive function to show the MessageBox of the next question or whether the dish was correct
+        /// </summary>
+        /// <param name="isPasta">The user answer of the first question</param>
+        /// <param name="selectedFoods">Foods filtered according to the last answer</param>
+        /// <param name="existingCharacteristics">Wanted characteristics in selected foods</param>
+        /// <returns></returns>
         private bool NextQuestion(bool isPasta, List<FoodData> selectedFoods, List<string> existingCharacteristics)
         {
             bool stop = false;
